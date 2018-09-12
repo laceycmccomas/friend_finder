@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
  
     <title>Best Friend Survey</title>
  
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 <body>
 <div class="container">
@@ -182,49 +182,68 @@
 
 
 <script type = "text/javascript">
+   
+   $("#submit").on("click", function(event) {
+      event.preventDefault();
 
-   $("#submitButton").on("click", function(event) {
-            event.preventDefault();
-            var BFF = {
-                name: $("#name").val(),
-                picture: $("#pic").val(),
-                scores: [
-                    $("#Q1loc").val(),
-                    $("#Q2loc").val(),
-                    $("#Q3loc").val(),
-                    $("#Q4loc").val(),
-                    $("#Q5loc").val(),
-                    $("#Q6loc").val(),
-                    $("#Q7loc").val(),
-                    $("#Q8loc").val(),
-                    $("#Q9loc").val(),
-                    $("#Q10loc").val(),
-                ]
-            }
-            
-            $.post("/api/friends", BFF)
-                .then(function(data) {
-                console.log(data);
-            });
-            
-            $('.modal-body').text("Hey Friend");
-            $('.modal-body').html("Hey Friend");
+      function validateBFF() {
+        var isValid = true;
+        $(".form-control").each(function() {
+          if ($(this).val() === "") {
+            isValid = false;
+          }
         });
+        $(".chosen-select").each(function() {
+          if ($(this).val() === "") {
+            isValid = false;
+          }
+        });
+        return isValid;
+      }
+
+
+            if (validateBFF ()) {
+                    var BFF = {
+                        name: $("#name").val(),
+                        picture: $("#pic").val(),
+                        scores: [
+                            $("#Q1loc").val(),
+                            $("#Q2loc").val(),
+                            $("#Q3loc").val(),
+                            $("#Q4loc").val(),
+                            $("#Q5loc").val(),
+                            $("#Q6loc").val(),
+                            $("#Q7loc").val(),
+                            $("#Q8loc").val(),
+                            $("#Q9loc").val(),
+                            $("#Q10loc").val(),
+                        ]
+                    }
+            
+             $.post("/api/friends", BFF, function(data) {
+                console.log(data);
+            
+            $("#modal-name").text("Hey Friend");
+            $("#modal-body").html("Hey Friend");
+
+            });
+
+
 </script>
 
 <br>
 <!-- POPUP MODAL -->
 
 <!-- Large modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Show me my new friend!</button>
+ <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Show me my new friend!</button>
 
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
+ <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+   <div class="modal-dialog modal-lg">
+     <div class="modal-content">
       
-    </div>
-  </div>
-</div>
+     </div>
+   </div>
+ </div>
 
 </body>
 </html>
