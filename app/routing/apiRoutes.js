@@ -55,7 +55,7 @@ var totalDifference = [];
         for (var y = 0; y < totalDifference.length; y++) {
             if (potential === totalDifference[y]) {
                 console.log(friendsArray);
-                yourNewFriend = friendsArray[y].pic;
+                yourNewFriend = friendsArray[y].photo;
                 return yourNewFriend();
             }
         }
