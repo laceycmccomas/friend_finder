@@ -3,18 +3,19 @@ var bodyParser = require("body-parser");
 var path = require("path");
 
 
-var server = express();
+var http = require("http");
 
-var PORT = process.env.PORT || 8081;
+var PORT = 3306;
 
+var server = http.createServer(function(req, res) {
+    res.end("Welcome to my server" + req.url);
+});
 
-
-server.use(bodyParser.urlencoded({ extended: true }));
 
 server.use(bodyParser.json());
 
 
-server.use(express.static(__dirname + '/app/public'));
+server.use(server.static(__dirname + '/app/public'));
 
 
 var htmlRoutes = require('./app/routing/htmlRoutes')(app, path);
