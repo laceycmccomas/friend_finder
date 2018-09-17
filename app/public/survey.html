@@ -213,14 +213,13 @@
                             $("#Q10").val(),
                         ]
                     }
+     });
             
-            //  $.post("/api/friends", BFF, function(data) {
-            //     console.log(data);
-            
-            // $("#").text("Hey Friend");
-            // $("#").attr(data[i].photo);
+   $.post("/api/friends", BFF,
+    function(data) {
+         console.log(data);
 
-            // });
+   });
 
 
 </script>
