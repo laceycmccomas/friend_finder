@@ -21,11 +21,11 @@
                 </div>
                 <div class="card-body">
                     <form>
-                        <label for="name"> What's your name? (Required) </label>
+                        <label for="name"> What's your name?</label>
                         <br>
                         <input type="text" id="name">
                         <br>
-                        <label for="pic"> Go ahead and add a pic of yourself! (Required) </label>
+                        <label for="pic"> Go ahead and add a pic of yourself!</label>
                         <br>
                         <input type="text" id="pic">
                         <br>
@@ -41,7 +41,6 @@
             <div class="card">
                     <div class="card-header">
                         <h3><strong>Questions:</strong></h3>
-                        <p><strong>On a scale of 1-5 with 5 being highly agree and 1 being highly disagree.</strong></p>
                     </div>
 
                 <div class="card-body">
@@ -180,57 +179,6 @@
 </div>
 
 
-
-<script type = "text/javascript">
-   
-   $("#submit").on("click", function(event) {
-      event.preventDefault();
-
-      function validateBFF() {
-        var isValid = true;
-        $(".form-control").each(function() {
-          if ($(this).val() === "") {
-            isValid = false;
-          }
-        });
-        $(".chosen-select").each(function() {
-          if ($(this).val() === "") {
-            isValid = false;
-          }
-        });
-        return isValid;
-      }
-
-
-            if (validateBFF ()) {
-                    var BFF = {
-                        name: $("#name").val(),
-                        picture: $("#pic").val(),
-                        scores: [
-                            $("#Q1loc").val(),
-                            $("#Q2loc").val(),
-                            $("#Q3loc").val(),
-                            $("#Q4loc").val(),
-                            $("#Q5loc").val(),
-                            $("#Q6loc").val(),
-                            $("#Q7loc").val(),
-                            $("#Q8loc").val(),
-                            $("#Q9loc").val(),
-                            $("#Q10loc").val(),
-                        ]
-                    }
-            
-             $.post("/api/friends", BFF, function(data) {
-                console.log(data);
-            
-            $("#modal-name").text("Hey Friend");
-            $("#modal-body").html("Hey Friend");
-
-            });
-
-
-</script>
-
 <br>
 <!-- POPUP MODAL -->
 
@@ -244,6 +192,39 @@
      </div>
    </div>
  </div>
+
+<script type = "text/javascript">
+   
+   $("#submit").on("click", function(event) {
+      event.preventDefault();
+                    var BFF = {
+                        name: $("#name").val(),
+                        picture: $("#photo").val(),
+                        scores: [
+                            $("#Q1").val(),
+                            $("#Q2").val(),
+                            $("#Q3").val(),
+                            $("#Q4").val(),
+                            $("#Q5").val(),
+                            $("#Q6").val(),
+                            $("#Q7").val(),
+                            $("#Q8").val(),
+                            $("#Q9").val(),
+                            $("#Q10").val(),
+                        ]
+                    }
+            
+            //  $.post("/api/friends", BFF, function(data) {
+            //     console.log(data);
+            
+            // $("#").text("Hey Friend");
+            // $("#").attr(data[i].photo);
+
+            // });
+
+
+</script>
+
 
 </body>
 </html>
