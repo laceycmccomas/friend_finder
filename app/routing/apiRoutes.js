@@ -1,4 +1,4 @@
-var friendsArray = require("../data/friends");
+var friendsArray = require("../data/friends.js");
 
 var needsAFriend;
 

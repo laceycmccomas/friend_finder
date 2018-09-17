@@ -9,13 +9,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-// app.use(express.static(__dirname + '/app/public'));
+app.use(express.static(__dirname + '/app/public'));
 
 
-require("app/routing/apiRoutes")(app);
+// var apiRoutes = require("app/routing/apiRoutes")(app)(path);
+// var htmlRoutes = require("app/routing/htmlRoutes")(app)(path);
+
+require("app/routing/apiRoutes.js")(app);
 require("app/routing/htmlRoutes")(app);
-
-
 
 //start our server
 app.listen(PORT, function() {
