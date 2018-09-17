@@ -12,11 +12,11 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/app/public'));
 
 
-// var apiRoutes = require("app/routing/apiRoutes")(app)(path);
-// var htmlRoutes = require("app/routing/htmlRoutes")(app)(path);
+// var apiRoutes = require("./app/routing/apiRoutes")(app)(path);
+// var htmlRoutes = require("./app/routing/htmlRoutes")(app)(path);
 
-require("app/routing/apiRoutes.js")(app);
-require("app/routing/htmlRoutes")(app);
+require("./app/routing/apiRoutes")(app);
+require("./app/routing/htmlRoutes")(app);
 
 //start our server
 app.listen(PORT, function() {
